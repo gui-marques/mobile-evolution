@@ -51,7 +51,7 @@ const AuthProvider: React.FC = ({ children }) => {
         setData({ token: token[1], user: JSON.parse(user[1]) });
       }
 
-      setLoading(false);
+     setLoading(false);
     }
 
     loadStoragedData();

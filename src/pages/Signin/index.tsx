@@ -58,6 +58,7 @@ const Signin: React.FC = () => {
         });
 
         navigation.navigate('Home')
+
         // await signIn({
         //   email: data.email,
         //   password: data.password,
@@ -66,13 +67,13 @@ const Signin: React.FC = () => {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
-          console.log(errors);
+
 
           formRef.current?.setErrors(errors);
-
+          Alert.alert('Por favor verifique o E-mail e a senha digitada.')
           return;
         }
-         console.log(data);
+        console.log(data);
         Alert.alert(
           'Erro na autenticação',
           'Ocorreu um erro ao fazer login, cheque as credenciais.',

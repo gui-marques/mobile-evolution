@@ -1,25 +1,24 @@
-// eslint-disable-next-line no-use-before-define
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { View, ActivityIndicator } from "react-native";
 
-import Signin from '../pages/Signin';
-import Signup from '../pages/Signup';
-import Home from '../pages/Home';
 
-const Auth = createStackNavigator();
+import AuthRoutes from "./auth.route";
+import AppRoutes from "./app.routes";
 
-const AuthRoutes: React.FC = () => (
-  <Auth.Navigator
-    screenOptions={{
-      headerShown: false,
-      cardStyle: { backgroundColor: '#312e38' },
-    }}
-    initialRouteName="Home"
-  >
-    <Auth.Screen name="Signin" component={Signin} />
-    <Auth.Screen name="Signup" component={Signup} />
-    <Auth.Screen name="Home" component={Home} />
-  </Auth.Navigator>
-);
+import {useAuth} from '../hooks/auth';
 
-export default AuthRoutes;
+const Routes: React.FC = () => {
+  const {user, loading} = useAuth();
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size="large" color="#999"/>
+      </View>
+    )
+  }
+
+  return user ?  <AppRoutes/> : <AuthRoutes />
+
+}
+
+export default Routes;

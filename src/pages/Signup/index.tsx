@@ -1,4 +1,5 @@
-import React, {useRef, useCallback} from 'react';
+import React, { useRef, useCallback } from 'react';
+
 import {
   Image,
   KeyboardAvoidingView,
@@ -9,8 +10,8 @@ import {
   TextInput
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import {Form} from '@unform/mobile';
-import {FormHandles} from '@unform/core';
+import { Form } from '@unform/mobile';
+import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
 import api from '../../services/api';
@@ -62,7 +63,7 @@ const Signup: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-          console.log(data);
+        console.log(data);
         await api.post('/usuarios/psolacessoos', data);
 
         Alert.alert(
@@ -103,78 +104,78 @@ const Signup: React.FC = () => {
           <Image style={{ maxWidth: 200, maxHeight: 150, marginBottom: 20 }} source={logoImg} />
 
           <Form ref={formRef} onSubmit={handleSignUp}>
-          <Input
-                autoCapitalize="words"
-                name="name"
-                icon="user"
-                placeholder="Nome"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  emailInputRef.current?.focus();
-                }}
-              />
+            <Input
+              autoCapitalize="words"
+              name="name"
+              icon="user"
+              placeholder="Nome"
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                emailInputRef.current?.focus();
+              }}
+            />
 
-              <Input
-                ref={emailInputRef}
-                keyboardType="email-address"
-                autoCorrect={false}
-                autoCapitalize="none"
-                name="email"
-                icon="mail"
-                placeholder="E-mail"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  phonelInputRef.current?.focus();
-                }}
-              />
-              <Input
-                ref={phonelInputRef}
-                keyboardType="phone-pad"
-                autoCorrect={false}
-                autoCapitalize="none"
-                name="phone"
-                icon="phone"
-                placeholder="Telefone"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  tecnicoInputRef.current?.focus();
-                }}
-              />
-              <Input
-                ref={tecnicoInputRef}
-                keyboardType="number-pad"
-                autoCorrect={false}
-                autoCapitalize="none"
-                name="perfil"
-                icon="user"
-                placeholder="1 para tecnico 2 para vendedor"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
-              />
+            <Input
+              ref={emailInputRef}
+              keyboardType="email-address"
+              autoCorrect={false}
+              autoCapitalize="none"
+              name="email"
+              icon="mail"
+              placeholder="E-mail"
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                phonelInputRef.current?.focus();
+              }}
+            />
+            <Input
+              ref={phonelInputRef}
+              keyboardType="phone-pad"
+              autoCorrect={false}
+              autoCapitalize="none"
+              name="phone"
+              icon="phone"
+              placeholder="Telefone"
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                tecnicoInputRef.current?.focus();
+              }}
+            />
+            <Input
+              ref={tecnicoInputRef}
+              keyboardType="number-pad"
+              autoCorrect={false}
+              autoCapitalize="none"
+              name="perfil"
+              icon="user"
+              placeholder="1 para tecnico 2 para vendedor"
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                passwordInputRef.current?.focus();
+              }}
+            />
 
-              <Input
-                ref={passwordInputRef}
-                secureTextEntry
-                name="password"
-                icon="lock"
-                placeholder="Senha"
-                textContentType="newPassword"
-                returnKeyType="send"
-                onSubmitEditing={() => formRef.current?.submitForm()}
-              />
+            <Input
+              ref={passwordInputRef}
+              secureTextEntry
+              name="password"
+              icon="lock"
+              placeholder="Senha"
+              textContentType="newPassword"
+              returnKeyType="send"
+              onSubmitEditing={() => formRef.current?.submitForm()}
+            />
           </Form>
           <Button
-            onPress={() =>  formRef.current?.submitForm()}
+            onPress={() => formRef.current?.submitForm()}
           >
             Solicitar
           </Button>
 
           <BackToSignin
-            onPress={() => navigation.goBack() }
+            onPress={() => navigation.goBack()}
           >
-            <Icon name="arrow-left" size={20} color="#fff"/>
+            <Icon name="arrow-left" size={20} color="#fff" />
             <BackToSigninText>Voltar para o Acesso</BackToSigninText>
           </BackToSignin>
         </Container>
